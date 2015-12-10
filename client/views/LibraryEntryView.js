@@ -8,6 +8,7 @@ var LibraryEntryView = Backbone.View.extend({
   events: {
     'click': function() {
       this.model.play();
+      this.model.enqueue();
     }
   },
 
@@ -16,3 +17,16 @@ var LibraryEntryView = Backbone.View.extend({
   }
 
 });
+
+
+/*
+  xit('queues clicked songs', function(){
+    sinon.spy(SongModel.prototype, 'enqueue');
+
+    view.$el.children().first().click();
+    expect(model.enqueue).to.have.been.called;
+
+    SongModel.prototype.enqueue.restore();
+  });
+
+*/

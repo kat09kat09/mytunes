@@ -10,14 +10,26 @@ var SongQueue = Songs.extend({
         this.playFirst();   
       }
     });
+
+    // var queue= this.get('songQueue'); 
+    this.on('enqueue', function(song){
+      console.log("calling enqueue event");
+      this.push(song);
+      }
+    );
+
+
+    this.on("dequeue", function () {
+      this.remove(); 
+    });
     
     this.on("ended", function () {
-      console.log('ended gets called'); 
+      // console.log('ended gets called'); 
       this.remove(this.at(0));
 
 
       if(this.length >0) { 
-        console.log('if statement is reached'); 
+        // console.log('if statement is reached'); 
         this.playFirst();
       }
     });
@@ -25,8 +37,8 @@ var SongQueue = Songs.extend({
   },
 
   playFirst: function()  { 
-    console.log("playFirst gets called");
-    console.log(this); 
+    // console.log("playFirst gets called");
+    // console.log(this); 
     this.at(0).play(); 
   }
 

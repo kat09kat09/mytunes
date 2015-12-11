@@ -6,21 +6,29 @@ var SongQueueEntryView = Backbone.View.extend({
 
   template: _.template('<td class="playlistEntry">(<%= artist %>)</td><td class="playlistEntry"><%= title %></td>'),
 
-  initialize: function() {
-    this.on('rerenderPlaylist', function ( ) {
-      consonle.log("song queue view will rerender event")
-      this.render(); 
-    }); 
-  },
+  // initialize: function() {
+  //   // this.on('rerenderPlaylist', function ( ) {
+  //   //   consonle.log("song queue view will rerender event")
+  //   //   this.render(); 
+  //   // }); 
+  
+  //   console.log('this',this); 
+  //   this.on("add", function(){
+  //      console.log("add event was caught");
+  //      this.render() ;
+
+  //   })
+  // },
 
   events: {
-    // 'click': function() {
-    //   this.model.play();
-    //   this.model.enqueue();
-    // },
+    'click': function() {
+       // this.model.play();
+       this.model.dequeue();
+    },
     // 'rerender': function () {
     //   this.render(); 
     // }
+    "add" : "this.render"
   },
 
 
